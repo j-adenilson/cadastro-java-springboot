@@ -1,4 +1,4 @@
-package com.cadastro.cadastroDeFuncionarios;
+package com.cadastro.CadastroDeFuncionarios;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
