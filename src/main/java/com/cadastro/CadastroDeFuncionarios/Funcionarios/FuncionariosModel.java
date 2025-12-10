@@ -1,6 +1,9 @@
-package com.cadastro.CadastroDeFuncionarios;
+package com.cadastro.CadastroDeFuncionarios.Funcionarios;
 
+import com.cadastro.CadastroDeFuncionarios.Departamentos.DepartamentosModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -12,6 +15,10 @@ public class FuncionariosModel {
     private String nome;
     private String email;
     private int idade;
+
+    @ManyToOne
+    @JoinColumn(name = "departamentos_id")
+    private DepartamentosModel departamentos;
 
     public FuncionariosModel() {
     }

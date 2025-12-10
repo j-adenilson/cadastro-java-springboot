@@ -1,4 +1,4 @@
-package com.cadastro.CadastroDeFuncionarios;
+package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class FuncionariosController {
+public class DepartamentosController {
 
-    @GetMapping("/home")
-    public String home(){
-        return "Primeira mensagem na rota Home";
+    @GetMapping("/departamento")
+    public String homeDepartamento(){
+        return "Olá do departamento";
     }
-
 }
