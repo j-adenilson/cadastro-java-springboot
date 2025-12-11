@@ -2,10 +2,14 @@ package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
 import com.cadastro.CadastroDeFuncionarios.Funcionarios.FuncionariosModel;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Table(name = "tb_departamentos")
 public class DepartamentosModel {
 
@@ -17,18 +21,5 @@ public class DepartamentosModel {
     @OneToMany(mappedBy = "departamentos")
     private List<FuncionariosModel> funcionarios;
 
-    public DepartamentosModel() {
-    }
 
-    public DepartamentosModel(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
 }
