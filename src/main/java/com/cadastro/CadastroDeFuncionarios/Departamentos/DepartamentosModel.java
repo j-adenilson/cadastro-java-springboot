@@ -15,7 +15,10 @@ public class DepartamentosModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_departamento")
     private Long id;
+
+    @Column(name = "nome_departamento")
     private String departamento;
 
     @OneToMany(mappedBy = "departamentos")
