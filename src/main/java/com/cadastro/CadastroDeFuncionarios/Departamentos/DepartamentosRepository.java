@@ -1,4 +1,6 @@
 package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
-public interface DepartamentosRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DepartamentosRepository extends JpaRepository<DepartamentosModel, Long> {
 }
