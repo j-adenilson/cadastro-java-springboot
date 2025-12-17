@@ -21,17 +21,17 @@ public class DepartamentosController {
         return "Departamento criado";
     }
 
-    //mostrar todos
+//    //mostrar todos
 //    @GetMapping("/listarDepartamentos")
 //    public String listarDepartamentos(){
 //        return departamentosService.listarDepartamentos();
 //    }
-
-    //mostrar por id
-    @GetMapping("/todosID")
-    public String mostrarDepartamentosPorId(){
-        return "Mostrar Departamento Por ID";
-    }
+//
+//    //mostrar por id
+//    @GetMapping("/listarPorId/{id}")
+//    public String listarPorId(@PathVariable Long id){
+//        return departamentosService.listarPorId(id);
+//    }
 
 
     //alterar dados

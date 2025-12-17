@@ -25,16 +25,16 @@ public class FuncionariosController {
         return "Funcionario criado";
     }
 
-    //mostrar todos
+    //listar todos
     @GetMapping("/listarFuncionarios")
     public List<FuncionariosModel> listarFuncionarios(){
         return funcionariosService.listarFuncionarios();
     }
 
-    //mostrar por id
-    @GetMapping("/todosID")
-    public String mostrarFuncionariosPorId(){
-        return "Mostrar funcionario Por ID";
+    //listar por id
+    @GetMapping("/listarPorId/{id}")
+    public FuncionariosModel listarPorId(@PathVariable Long id){
+        return funcionariosService.listarPorId(id);
     }
 
 

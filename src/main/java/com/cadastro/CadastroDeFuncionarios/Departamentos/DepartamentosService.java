@@ -1,6 +1,7 @@
 package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DepartamentosService {
 
@@ -13,6 +14,12 @@ public class DepartamentosService {
     //listar departamentos
     public List<DepartamentosModel> listarDepartamentos(){
         return departamentosRepository.findAll();
+    }
+
+    //listar por id
+    public DepartamentosModel listarPorId(Long id){
+        Optional<DepartamentosModel> departamentoPorId = departamentosRepository.findById(id);
+        return departamentoPorId.orElse(null);
     }
 
 }
