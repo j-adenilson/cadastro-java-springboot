@@ -9,6 +9,10 @@ public class DepartamentosController {
 
     private DepartamentosService departamentosService;
 
+    public DepartamentosController(DepartamentosService departamentosService) {
+        this.departamentosService = departamentosService;
+    }
+
     @GetMapping("/departamento")
     public String homeDepartamento(){
         return "Olá do departamento";
@@ -21,17 +25,17 @@ public class DepartamentosController {
         return "Departamento criado";
     }
 
-//    //mostrar todos
-//    @GetMapping("/listarDepartamentos")
-//    public String listarDepartamentos(){
-//        return departamentosService.listarDepartamentos();
-//    }
-//
-//    //mostrar por id
-//    @GetMapping("/listarPorId/{id}")
-//    public String listarPorId(@PathVariable Long id){
-//        return departamentosService.listarPorId(id);
-//    }
+    //listar todos
+    @GetMapping("/listarDepartamentos")
+    public List<DepartamentosModel>listarDepartamentos(){
+        return departamentosService.listarDepartamentos();
+    }
+
+    //listar por id
+    @GetMapping("/listarPorId/{id}")
+    public DepartamentosModel listarPorId(@PathVariable Long id){
+        return departamentosService.listarPorId(id);
+    }
 
 
     //alterar dados
