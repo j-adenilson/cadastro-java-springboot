@@ -1,6 +1,7 @@
 package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
 import com.cadastro.CadastroDeFuncionarios.Funcionarios.FuncionariosModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class DepartamentosModel {
     private String departamento;
 
     @OneToMany(mappedBy = "departamentos")
+    @JsonIgnore
     private List<FuncionariosModel> funcionarios;
 
 

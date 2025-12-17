@@ -1,10 +1,13 @@
 package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/departamentos")
 public class DepartamentosController {
+
+    private DepartamentosService departamentosService;
 
     @GetMapping("/departamento")
     public String homeDepartamento(){
@@ -19,10 +22,10 @@ public class DepartamentosController {
     }
 
     //mostrar todos
-    @GetMapping("/todos")
-    public String mostrarTodosOsDepartamentos(){
-        return "Mostrar todos os Departamentos";
-    }
+//    @GetMapping("/listarDepartamentos")
+//    public String listarDepartamentos(){
+//        return departamentosService.listarDepartamentos();
+//    }
 
     //mostrar por id
     @GetMapping("/todosID")

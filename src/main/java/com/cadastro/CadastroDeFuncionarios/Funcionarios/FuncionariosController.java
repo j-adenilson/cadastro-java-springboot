@@ -2,9 +2,17 @@ package com.cadastro.CadastroDeFuncionarios.Funcionarios;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/funcionarios")
 public class FuncionariosController {
+
+    private FuncionariosService funcionariosService;
+
+    public FuncionariosController(FuncionariosService funcionariosService) {
+        this.funcionariosService = funcionariosService;
+    }
 
     @GetMapping("/home")
     public String home(){
@@ -18,9 +26,9 @@ public class FuncionariosController {
     }
 
     //mostrar todos
-    @GetMapping("/todos")
-    public String mostrarTodosOsFuncionarios(){
-        return "Mostrar todos os funcionarios";
+    @GetMapping("/listarFuncionarios")
+    public List<FuncionariosModel> listarFuncionarios(){
+        return funcionariosService.listarFuncionarios();
     }
 
     //mostrar por id
