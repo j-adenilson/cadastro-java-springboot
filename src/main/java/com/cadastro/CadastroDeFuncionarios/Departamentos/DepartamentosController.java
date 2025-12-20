@@ -21,8 +21,8 @@ public class DepartamentosController {
 
     //adicionar
     @PostMapping("/criar")
-    public String criarDepartaento(){
-        return "Departamento criado";
+    public DepartamentosModel criarDepartamento(@RequestBody DepartamentosModel departamentos){
+        return departamentosService.criarDepartamento(departamentos);
     }
 
     //listar todos

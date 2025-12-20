@@ -15,6 +15,11 @@ public class FuncionariosService {
         this.funcionariosRepository = funcionariosRepository;
     }
 
+    //criar funcionario
+    public FuncionariosModel criarFuncionario(FuncionariosModel funcionarios){
+        return funcionariosRepository.save(funcionarios);
+    }
+
     //listar todos os funcionarios
     public List<FuncionariosModel> listarFuncionarios(){
         return funcionariosRepository.findAll();

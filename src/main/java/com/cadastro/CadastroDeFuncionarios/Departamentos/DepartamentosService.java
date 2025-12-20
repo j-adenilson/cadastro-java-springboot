@@ -14,6 +14,11 @@ public class DepartamentosService {
         this.departamentosRepository = departamentosRepository;
     }
 
+    //criar departamentos
+    public DepartamentosModel criarDepartamento(DepartamentosModel departamentos){
+        return departamentosRepository.save(departamentos);
+    }
+
     //listar departamentos
     public List<DepartamentosModel> listarDepartamentos(){
         return departamentosRepository.findAll();
