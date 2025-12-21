@@ -11,13 +11,24 @@ public class FuncionariosService {
 
     private FuncionariosRepository funcionariosRepository;
 
-    public FuncionariosService(FuncionariosRepository funcionariosRepository) {
+    private FuncionariosMapper funcionariosMapper;
+
+    public FuncionariosService(FuncionariosRepository funcionariosRepository, FuncionariosMapper funcionariosMapper) {
         this.funcionariosRepository = funcionariosRepository;
+        this.funcionariosMapper = funcionariosMapper;
     }
 
     //criar funcionario
-    public FuncionariosModel criarFuncionario(FuncionariosModel funcionarios){
-        return funcionariosRepository.save(funcionarios);
+//    public FuncionariosDTO criarFuncionario(FuncionariosDTO funcionariosDTO){
+//        FuncionariosModel funcionarios = new map(funcionariosDTO);
+//        funcionarios = funcionariosRepository.save(funcionarios);
+//        return funcionariosMapper.map(funcionarios);
+//    }
+
+    public FuncionariosDTO criarFuncionario(FuncionariosDTO funcionariosDTO){
+        FuncionariosModel funcionarios = funcionariosMapper.map(funcionariosDTO);
+        funcionarios = funcionariosRepository.save(funcionarios);
+        return funcionariosMapper.map(funcionarios);
     }
 
     //listar todos os funcionarios
@@ -46,4 +57,10 @@ public class FuncionariosService {
         funcionariosRepository.deleteById(id);
     }
 
+//    //====criado ao criar o criar a rota criar funcionario
+//    private class map extends FuncionariosModel {
+//        public map(FuncionariosDTO funcionariosDTO) {
+//        }
+//    }
+//    //====
 }

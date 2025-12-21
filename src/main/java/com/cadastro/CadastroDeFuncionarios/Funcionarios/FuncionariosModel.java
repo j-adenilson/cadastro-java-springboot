@@ -30,6 +30,9 @@ public class FuncionariosModel {
     @Column(name = "idade")
     private int idade;
 
+    @Column(name = "cargo")
+    private String cargo;
+
     @ManyToOne
     @JoinColumn(name = "departamentos_id")
     private DepartamentosModel departamentos;
