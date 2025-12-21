@@ -30,6 +30,15 @@ public class DepartamentosService {
         return departamentoPorId.orElse(null);
     }
 
+    //atualizar departamentos por ID
+    public DepartamentosModel atualizarDepartamentosPorId(Long id, DepartamentosModel departamentosAtualizado){
+        if (departamentosRepository.existsById(id)){
+            departamentosAtualizado.setId(id);
+            return departamentosRepository.save(departamentosAtualizado);
+        }
+        return null;
+    }
+
     //deletar por id
     //precisa ser um metodo void
     public void deletarDepartamentosPorId(Long id){
