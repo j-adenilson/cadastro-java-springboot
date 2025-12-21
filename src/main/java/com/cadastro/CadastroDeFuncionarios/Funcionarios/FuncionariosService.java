@@ -31,4 +31,10 @@ public class FuncionariosService {
         return funcionarioPorId.orElse(null);
     }
 
+    //deletar por id
+    //precisa ser um metodo void
+    public void deletarFuncionarioPorId(Long id){
+        funcionariosRepository.deleteById(id);
+    }
+
 }

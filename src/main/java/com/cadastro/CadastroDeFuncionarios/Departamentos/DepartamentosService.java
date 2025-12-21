@@ -30,4 +30,10 @@ public class DepartamentosService {
         return departamentoPorId.orElse(null);
     }
 
+    //deletar por id
+    //precisa ser um metodo void
+    public void deletarDepartamentosPorId(Long id){
+        departamentosRepository.deleteById(id);
+    }
+
 }
