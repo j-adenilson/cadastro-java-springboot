@@ -39,9 +39,9 @@ public class FuncionariosController {
 
 
     //alterar dados
-    @PutMapping("/alterarID")
-    public String alterarFuncionarioPorId(){
-        return "Alterar funcionario por ID";
+    @PutMapping("/atualizar/{id}")
+    public FuncionariosModel atualizarFuncionarioPorId(@PathVariable Long id, @RequestBody FuncionariosModel funcionariosAtualizado){
+        return funcionariosService.atualizarFuncionarioPorId(id, funcionariosAtualizado);
     }
 
     //deletar

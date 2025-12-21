@@ -39,9 +39,9 @@ public class DepartamentosController {
 
 
     //alterar dados
-    @PutMapping("/alterarID")
-    public String alterarDepartamentosPorId(){
-        return "Alterar Departamento por ID";
+    @PutMapping("/atualizar/{id}")
+    public DepartamentosModel atualizarDepartamentosPorId(@PathVariable Long id, @RequestBody DepartamentosModel departamentosAtualizado){
+        return departamentosService.atualizarDepartamentosPorId(id, departamentosAtualizado);
     }
 
     //deletar
