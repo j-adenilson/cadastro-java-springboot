@@ -1,5 +1,8 @@
 package com.cadastro.CadastroDeFuncionarios.Departamentos;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -21,8 +24,11 @@ public class DepartamentosController {
 
     //adicionar
     @PostMapping("/criar")
-    public DepartamentosDTO criarDepartamento(@RequestBody DepartamentosDTO departamentos){
-        return departamentosService.criarDepartamento(departamentos);
+    public ResponseEntity<String> criarDepartamento(@RequestBody DepartamentosDTO departamentos){
+
+        DepartamentosDTO departamentosDTO = departamentosService.criarDepartamento(departamentos);
+        return  ResponseEntity.status(HttpStatus.CREATED)
+                .body("Departamento criado com sucesso: " + departamentosDTO.getDepartamento() + " (ID): " + departamentosDTO.getId());
     }
 
     //listar todos
@@ -46,7 +52,16 @@ public class DepartamentosController {
 
     //deletar
     @DeleteMapping("/deletar/{id}")
-    public void deletarDepartamentosPorId(@PathVariable Long id){
-        departamentosService.deletarDepartamentosPorId(id);
+    public ResponseEntity<String> deletarDepartamentosPorId(@PathVariable Long id){
+
+        if (departamentosService.listarPorId(id) != null){
+            departamentosService.deletarDepartamentosPorId(id);
+            return ResponseEntity.ok("Departamento com ID " + id + " deletado com sucesso");
+
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("O departamento com ID: " + id + " Não foi encontrado");
+        }
+
     }
 }

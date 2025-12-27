@@ -1,5 +1,7 @@
 package com.cadastro.CadastroDeFuncionarios.Funcionarios;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +23,11 @@ public class FuncionariosController {
 
     //adicionar
     @PostMapping("/criar")
-    public FuncionariosDTO criarFuncionario(@RequestBody FuncionariosDTO funcionario){
-        return funcionariosService.criarFuncionario(funcionario);
+    public ResponseEntity<String> criarFuncionario(@RequestBody FuncionariosDTO funcionario){
+
+        FuncionariosDTO funcionariosDTO = funcionariosService.criarFuncionario(funcionario);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Funcionario criado com sucesso: " + funcionariosDTO.getNome() + " (ID): " + funcionariosDTO.getId());
     }
 
     //listar todos
@@ -46,8 +51,16 @@ public class FuncionariosController {
 
     //deletar
     @DeleteMapping("/deletar/{id}")
-    public void deletarFuncionarioPorId(@PathVariable Long id){
-        funcionariosService.deletarFuncionarioPorId(id);
+    public ResponseEntity<String> deletarFuncionarioPorId(@PathVariable Long id){
+
+        if (funcionariosService.listarPorId(id) != null){
+            funcionariosService.deletarFuncionarioPorId(id);
+        return ResponseEntity.ok("Funcionario com ID " + id + " deletado com sucesso");
+
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("O funcionario com ID: " + id + " não foi encontrado");
+        }
     }
 
 
