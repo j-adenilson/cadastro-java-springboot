@@ -10,13 +10,22 @@ public class DepartamentosService {
 
     private DepartamentosRepository departamentosRepository;
 
-    public DepartamentosService(DepartamentosRepository departamentosRepository) {
+    private DepartamentosMapper departamentosMapper;
+
+    public DepartamentosService(DepartamentosRepository departamentosRepository, DepartamentosMapper departamentosMapper) {
         this.departamentosRepository = departamentosRepository;
+        this.departamentosMapper = departamentosMapper;
     }
 
-    //criar departamentos
-    public DepartamentosModel criarDepartamento(DepartamentosModel departamentos){
-        return departamentosRepository.save(departamentos);
+    //    //criar departamentos
+//    public DepartamentosModel criarDepartamento(DepartamentosModel departamentos){
+//        return departamentosRepository.save(departamentos);
+//    }
+
+    public DepartamentosDTO criarDepartamento(DepartamentosDTO departamentosDTO){
+        DepartamentosModel departamentos = departamentosMapper.map(departamentosDTO);
+        departamentos = departamentosRepository.save(departamentos);
+        return departamentosMapper.map(departamentos);
     }
 
     //listar departamentos
